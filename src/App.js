@@ -4,30 +4,41 @@ import './App.css'
 import './Components/Modal.css'
 
 class App extends Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state={
             modal: [],
+            increment:0,
             modalIsOpen: true
         }
-
-        this.openModal=this.openModal.bind(this)
-        this.closeModal=this.closeModal.bind(this)
         this.addModal=this.addModal.bind(this)
-    }
-
-    openModal(){
-        this.setState({modalIsOpen: true})
-    }
-
-    closeModal(){
-        this.setState({modalIsOpen: false})
+        this.deleteModal=this.deleteModal.bind(this)
     }
 
     addModal(){
         this.setState(prevState => ({
-            modal: prevState.modal.concat('modal')
+            increment: prevState.increment + 1,
+            modal: prevState.modal.concat(this.state.increment)
         }))
+    }
+
+    deleteModal(index){
+        console.log('Array : ',this.state.modal.filter(function (item){ 
+            return (
+                item!==index
+            )}
+        ) )
+
+        let filteredModal = this.state.modal.filter(function (item) {
+            return (
+                item!==index
+            )
+        } )
+
+        this.setState({
+            modal: filteredModal
+        })
+               
     }
 
 
@@ -35,7 +46,7 @@ class App extends Component {
         console.log(`Modal : ${this.state.modal}, Length : ${this.state.modal.length}`)
 
         const listModal = this.state.modal.map((item,index) => {
-            return (<Modal key={item+index} onClose={index}/>)
+            return (<Modal name={item} key={item+index} onClose={item} trigger={this.deleteModal}/>)
         })
         
         return (
@@ -44,7 +55,7 @@ class App extends Component {
                     <h1 className="App-title">Welcome to React</h1>
                 </header>
                 <p className="App-intro">
-                    Modal : {this.state.modalIsOpen}
+                    Click Button To Add Modal
                 </p>
                 <button onClick={this.addModal}>Add Modal</button>
                 {listModal}

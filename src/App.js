@@ -52,7 +52,8 @@ class App extends Component {
         return (
             <div className="App">
                 <header className="App-header">
-                    <h1 className="App-title">Welcome to React</h1>
+                    <h1 className="App-title">Pinc Style Test 1</h1>
+                    <p>by GunturKH</p>
                 </header>
                 <p className="App-intro">
                     Click Button To Add Modal

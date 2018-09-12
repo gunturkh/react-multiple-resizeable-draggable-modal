@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
 import ReactModal from 'react-modal-resizable-draggable'
-// import 'Modal.css'
+// import './Modal.css'
+
+const styles={
+    p: {
+        marginTop: '20px'
+    }
+}
 
 class Modal extends Component {
     constructor(props){
@@ -28,7 +34,8 @@ class Modal extends Component {
             <ReactModal initWidth={150} initHeight={150} isOpen={this.state.condition} onRequestClose={this.closeModal}  >
                 <h3>Modal {this.props.name}</h3>
                 <div className="body">
-                    <p>This is the modal&apos;s body.</p>
+                    
+                    <p style={styles.p}>This is the modal&apos;s body.</p>
                 </div>
                 <button onClick={this.delete}>Close</button>
             </ReactModal>

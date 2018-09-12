@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Modal from './Components/Modal'
 import './App.css'
 import './Components/Modal.css'
+import Navbar from './Components/Navbar'
 
 class App extends Component {
     constructor(props){
@@ -51,10 +52,7 @@ class App extends Component {
         
         return (
             <div className="App">
-                <header className="App-header">
-                    <h1 className="App-title">Pinc Style Test 1</h1>
-                    <p>by GunturKH</p>
-                </header>
+                <Navbar/>
                 <p className="App-intro">
                     Click Button To Add Modal
                 </p>
